@@ -1,0 +1,4 @@
+model_type: "cnn"
+channels: [1, 6, 16]
+fc_layers: [120, 84]
+output_size: 10
