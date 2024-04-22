@@ -16,7 +16,7 @@ def train(model, device, train_loader, optimizer, criterion):
         loss.backward()
         optimizer.step()
         total_loss += loss.item()
-        wandb.log({'train_loss': loss.item()})
+    wandb.log({'train_loss': total_loss / len(train_loader)})
     return total_loss / len(train_loader)
 
 def validate(model, device, val_loader, criterion):
@@ -28,7 +28,7 @@ def validate(model, device, val_loader, criterion):
             output = model(data)
             loss = criterion(output, target)
             total_loss += loss.item()
-            wandb.log({'val_loss': loss.item()})
+    wandb.log({'val_loss': total_loss / len(val_loader)})
     return total_loss / len(val_loader)
 
 def main():
